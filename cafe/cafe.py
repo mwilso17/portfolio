@@ -39,7 +39,7 @@ def calculate_total():
 
   # records purchases and total to sales.txt
   with open(filename, 'a') as f:
-    f.write(f"{basket}\t {amount_to_pay}")
+    f.write(f"\n{basket}\t {amount_to_pay}")
 
 
 # Executes code
