@@ -7,6 +7,9 @@ from cafe_inventory import inventory, basket, subtotal
 # Tax rate can be adjusted by changing the value. 0.05 = 5% tax rate
 tax_rate = 0.05
 
+# a file to record items sold
+filename = 'cafe\sales.txt'
+
 def calculate_total():
   '''Accepts user input, calculates subtotal, adds tax, rounds total'''
   active = True
@@ -33,6 +36,10 @@ def calculate_total():
   amount_to_pay = round(pre_tax_total + (pre_tax_total * tax_rate), 2)
 
   print(f"Your total is: $", amount_to_pay)
+
+  # records purchases and total to sales.txt
+  with open(filename, 'a') as f:
+    f.write(f"{basket}\t {amount_to_pay}")
 
 
 # Executes code
