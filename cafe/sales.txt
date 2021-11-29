@@ -1,3 +1,3 @@
 
-['plain coffee', 'pastry']	 4.6
-['plain coffee', 'soda', 'pastry']	 7.32
+2021-11-29	 ['pastry']	 2.4
+2021-11-29	 ['plain coffee', 'mocha', 'pastry']	 9.06

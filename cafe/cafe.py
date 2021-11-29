@@ -3,6 +3,10 @@
 # sales totals and record purchases. 
 
 from cafe_inventory import inventory, basket, subtotal
+from datetime import date
+
+# Get today's date so we can record it to sales.txt after purchase
+today = date.today()
 
 # Tax rate can be adjusted by changing the value. 0.05 = 5% tax rate
 tax_rate = 0.05
@@ -39,7 +43,7 @@ def calculate_total():
 
   # records purchases and total to sales.txt
   with open(filename, 'a') as f:
-    f.write(f"\n{basket}\t {amount_to_pay}")
+    f.write(f"\n{today}\t {basket}\t {amount_to_pay}")
 
 
 # Executes code
