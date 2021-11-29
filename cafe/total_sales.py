@@ -11,13 +11,9 @@ h = open(filename, 'r')
 
 content = h.read()
 
-for line in content:
-  for i in line:
-    if i.isnumeric() == True:
-      # print(i)
-     total += int(i)
+for digit in content:
+    if digit.isdigit() == True:
+     print(digit)
+     # total += int(i)
 
-print("Total sales so far: $", total)
-
-# def calculate_total_sales():
-  # '''Main function to calculate total sales from sales.txt'''
+# print("Total sales so far: $", total)

@@ -1,3 +1,4 @@
 
 2021-11-29	 ['plain coffee', 'soda', 'soda']	 7.63
 2021-11-29	 ['plain coffee', 'pastry']	 4.60
+2021-11-29	 ['soda', 'doughnut']	 3.97

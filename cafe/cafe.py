@@ -48,10 +48,6 @@ def calculate_total():
   with open(filename, 'a') as f:
     f.write(f"\n{today}\t {basket}\t {amount_to_pay}")
 
-  # records totals to totals.txt for use in total_sales.py
-  with open(totals_file, 'a') as f:
-    f.write(f"\n{amount_to_pay}")
-
 
 # Executes code
 calculate_total()
