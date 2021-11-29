@@ -14,6 +14,9 @@ tax_rate = 0.05
 # a file to record items sold
 filename = 'cafe\sales.txt'
 
+# Second file to record only totals
+totals_file = 'cafe\\totals.txt'
+
 def calculate_total():
   '''Accepts user input, calculates subtotal, adds tax, rounds total'''
   active = True
@@ -44,6 +47,10 @@ def calculate_total():
   # records purchases and total to sales.txt
   with open(filename, 'a') as f:
     f.write(f"\n{today}\t {basket}\t {amount_to_pay}")
+
+  # records totals to totals.txt for use in total_sales.py
+  with open(totals_file, 'a') as f:
+    f.write(f"\n{amount_to_pay}")
 
 
 # Executes code
