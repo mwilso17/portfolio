@@ -1,3 +1,5 @@
 
 2021-11-29	 ['pastry']	 2.4
 2021-11-29	 ['plain coffee', 'mocha', 'pastry']	 9.06
+2021-11-29	 ['pastry']	 2.4
+2021-11-29	 ['pastry']	 2.40

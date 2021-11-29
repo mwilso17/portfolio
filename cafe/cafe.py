@@ -37,7 +37,7 @@ def calculate_total():
     subtotal.append(inventory[items])
   pre_tax_total = sum(subtotal)
 
-  amount_to_pay = round(pre_tax_total + (pre_tax_total * tax_rate), 2)
+  amount_to_pay = '{:.2f}'.format(round(pre_tax_total + (pre_tax_total * tax_rate), 2))
 
   print(f"Your total is: $", amount_to_pay)
 
