@@ -26,9 +26,9 @@ class Snowman:
   def update(self):
     '''Update Snowman's location based on movement flags'''
     # Update Snowman's y value
-    if self.moving_up:
+    if self.moving_up and self.rect.top > 0:
       self.y -= self.settings.snowman_speed
-    if self.moving_down:
+    if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
       self.y += self.settings.snowman_speed
 
     # Update rect object from self.y
