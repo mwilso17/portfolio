@@ -2,18 +2,20 @@ import sys
 
 import pygame
 
+from settings import Settings
+
 class SnowballFight:
   '''Main class to manage game'''
 
   def __init__(self):
     '''Initialize game'''
     pygame.init()
+    self.settings = Settings()
 
-    self.screen = pygame.display.set_mode((1200, 800))
+    self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+
     pygame.display.set_caption("Snowball Fight")
 
-    # Set background color
-    self.bg_color = (50, 230, 100)
 
   def run_game(self):
     '''Runs the main loop for the game'''
@@ -24,7 +26,7 @@ class SnowballFight:
           sys.exit()
 
       # Update screen during each loop
-      self.screen.fill(self.bg_color)
+      self.screen.fill(self.settings.bg_color)
 
       # Update to most recent screen.
       pygame.display.flip()
