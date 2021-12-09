@@ -3,6 +3,7 @@ import sys
 import pygame
 
 from settings import Settings
+from snowman import Snowman
 
 class SnowballFight:
   '''Main class to manage game'''
@@ -16,20 +17,31 @@ class SnowballFight:
 
     pygame.display.set_caption("Snowball Fight")
 
+    self.snowman = Snowman(self)
+
 
   def run_game(self):
     '''Runs the main loop for the game'''
     while True:
-      # Detect keyboard and mouse events
-      for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-          sys.exit()
+      self._check_events()
+      self._update_screen()
 
-      # Update screen during each loop
-      self.screen.fill(self.settings.bg_color)
+  def _check_events(self):
+    '''Detect keystrokes and mouse events'''
+    # Detect keyboard and mouse events
+    for event in pygame.event.get():
+      if event.type == pygame.QUIT:
+        sys.exit()
 
-      # Update to most recent screen.
-      pygame.display.flip()
+  def _update_screen(self):
+    '''Update the images on the screen and flip to new screen'''
+    # Update screen during each loop
+    self.screen.fill(self.settings.bg_color)
+    self.snowman.blitme()
+
+    # Update to most recent screen.
+    pygame.display.flip()
+
 
 
 if __name__ == '__main__':
