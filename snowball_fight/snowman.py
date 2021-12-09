@@ -15,6 +15,17 @@ class Snowman:
     # Start each Snowman on the left middle of the screen.
     self.rect.midleft = self.screen_rect.midleft
 
+    # Movement flags
+    self.moving_up = False
+    self.moving_down = False
+
+  def update(self):
+    '''Update Snowmans location based on movement flags'''
+    if self.moving_up:
+      self.rect.y -= 1
+    if self.moving_down:
+      self.rect.y += 1
+
   def blitme(self):
     '''Draw Snowman at its current location'''
     self.screen.blit(self.image, self.rect)

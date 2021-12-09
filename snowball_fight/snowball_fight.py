@@ -24,6 +24,7 @@ class SnowballFight:
     '''Runs the main loop for the game'''
     while True:
       self._check_events()
+      self.snowman.update()
       self._update_screen()
 
   def _check_events(self):
@@ -32,6 +33,18 @@ class SnowballFight:
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
         sys.exit()
+      elif event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_UP:
+          self.snowman.moving_up = True
+        elif event.key == pygame.K_DOWN:
+          self.snowman.moving_down = True
+
+
+      elif event.type == pygame.KEYUP:
+        if event.key == pygame.K_UP:
+          self.snowman.moving_up = False
+        elif event.key == pygame.K_DOWN:
+          self.snowman.moving_down = False
 
   def _update_screen(self):
     '''Update the images on the screen and flip to new screen'''
