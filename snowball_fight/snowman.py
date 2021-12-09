@@ -6,6 +6,7 @@ class Snowman:
   def __init__(self, sf_game):
     '''Initializes the Snowman and sets its starting point'''
     self.screen = sf_game.screen
+    self.settings = sf_game.settings
     self.screen_rect = sf_game.screen.get_rect()
 
     # Load Snowman image and get its rect.
@@ -15,16 +16,23 @@ class Snowman:
     # Start each Snowman on the left middle of the screen.
     self.rect.midleft = self.screen_rect.midleft
 
+    # Store a decimal value for Snowman's vertical positioning
+    self.y = float(self.rect.y)
+
     # Movement flags
     self.moving_up = False
     self.moving_down = False
 
   def update(self):
-    '''Update Snowmans location based on movement flags'''
+    '''Update Snowman's location based on movement flags'''
+    # Update Snowman's y value
     if self.moving_up:
-      self.rect.y -= 1
+      self.y -= self.settings.snowman_speed
     if self.moving_down:
-      self.rect.y += 1
+      self.y += self.settings.snowman_speed
+
+    # Update rect object from self.y
+    self.rect.y = self.y
 
   def blitme(self):
     '''Draw Snowman at its current location'''

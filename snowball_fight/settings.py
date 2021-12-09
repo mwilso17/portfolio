@@ -8,4 +8,5 @@ class Settings:
     self.screen_height = 800
     self.bg_color = (50, 230, 100)
 
-    
+    # Snowman settings
+    self.snowman_speed = 1
