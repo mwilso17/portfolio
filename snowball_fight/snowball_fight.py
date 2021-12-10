@@ -27,13 +27,8 @@ class SnowballFight:
     while True:
       self._check_events()
       self.snowman.update()
-      self.snowball.update()
+      self._update_snowballs()
       self._update_screen()
-
-      # Get rid of off screen snowballs
-      for snowball in self.snowball.copy():
-        if snowball.rect.left >= self.settings.screen_width:
-          self.snowball.remove(snowball)
 
   def _check_events(self):
     '''Detect keystrokes and mouse events'''
@@ -70,6 +65,15 @@ class SnowballFight:
     if len(self.snowball) < self.settings.snowballs_allowed:
       new_snowball = Snowball(self)
       self.snowball.add(new_snowball)
+
+  def _update_snowballs(self):
+    '''Update psoition of snowballs and get rid of old ones'''
+    self.snowball.update()
+
+    # Get rid of off screen snowballs
+    for snowball in self.snowball.copy():
+      if snowball.rect.left >= self.settings.screen_width:
+        self.snowball.remove(snowball)
 
   def _update_screen(self):
     '''Update the images on the screen and flip to new screen'''
