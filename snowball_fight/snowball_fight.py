@@ -34,17 +34,24 @@ class SnowballFight:
       if event.type == pygame.QUIT:
         sys.exit()
       elif event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_UP:
-          self.snowman.moving_up = True
-        elif event.key == pygame.K_DOWN:
-          self.snowman.moving_down = True
-
+        self._check_keydown_events(event)
 
       elif event.type == pygame.KEYUP:
-        if event.key == pygame.K_UP:
-          self.snowman.moving_up = False
-        elif event.key == pygame.K_DOWN:
-          self.snowman.moving_down = False
+        self._check_keyup_events(event)
+
+  def _check_keydown_events(self, event):
+    '''Respond to keypresses'''
+    if event.key == pygame.K_UP:
+      self.snowman.moving_up = True
+    elif event.key == pygame.K_DOWN:
+      self.snowman.moving_down = True
+
+  def _check_keyup_events(self, event):
+    '''Respond to key releases'''
+    if event.key == pygame.K_UP:
+      self.snowman.moving_up = False
+    elif event.key == pygame.K_DOWN:
+      self.snowman.moving_down = False
 
   def _update_screen(self):
     '''Update the images on the screen and flip to new screen'''
