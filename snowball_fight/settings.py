@@ -10,3 +10,9 @@ class Settings:
 
     # Snowman settings
     self.snowman_speed = 1
+
+    # Snowball settings
+    self.snowball_speed = 1.0
+    self.snowball_width = 10
+    self.snowball_height = 10
+    self.snowball_color = (255, 255, 255)
