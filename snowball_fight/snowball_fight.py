@@ -30,6 +30,11 @@ class SnowballFight:
       self.snowball.update()
       self._update_screen()
 
+      # Get rid of off screen snowballs
+      for snowball in self.snowball.copy():
+        if snowball.rect.left >= self.settings.screen_width:
+          self.snowball.remove(snowball)
+
   def _check_events(self):
     '''Detect keystrokes and mouse events'''
     # Detect keyboard and mouse events
