@@ -67,8 +67,9 @@ class SnowballFight:
 
   def _throw_snowball(self):
     '''Create a new snowball and add it to the snowball group'''
-    new_snowball = Snowball(self)
-    self.snowball.add(new_snowball)
+    if len(self.snowball) < self.settings.snowballs_allowed:
+      new_snowball = Snowball(self)
+      self.snowball.add(new_snowball)
 
   def _update_screen(self):
     '''Update the images on the screen and flip to new screen'''

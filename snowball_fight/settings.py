@@ -16,3 +16,4 @@ class Settings:
     self.snowball_width = 10
     self.snowball_height = 10
     self.snowball_color = (255, 255, 255)
+    self.snowballs_allowed = 2
