@@ -37,3 +37,8 @@ class Snowman:
   def blitme(self):
     '''Draw Snowman at its current location'''
     self.screen.blit(self.image, self.rect)
+
+  def ready_snowman(self):
+    '''Center snowman to left of screen'''
+    self.rect.midleft = self.screen_rect.midleft
+    self.y = float(self.rect.y)

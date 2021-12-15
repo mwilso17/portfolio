@@ -1,9 +1,11 @@
 import sys
 from random import random
+from time import sleep
 
 import pygame
 
 from settings import Settings
+from game_stats import GameStats
 from snowman import Snowman
 from snowball import Snowball
 from elf import Elf
@@ -19,6 +21,9 @@ class SnowballFight:
     self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
 
     pygame.display.set_caption("Snowball Fight")
+
+    # Instant that stores game stats.
+    self.stats = GameStats(self)
 
     self.snowman = Snowman(self)
     self.snowball = pygame.sprite.Group()
@@ -91,7 +96,23 @@ class SnowballFight:
 
     # Decect when elf collides with snowman
     if pygame.sprite.spritecollideany(self.snowman, self.elves):
-      print('hit')
+      self._snowman_hit()
+
+  def _snowman_hit(self):
+    '''Respond to snowman being hit by an elf'''
+    # Reduce lives by 1
+    self.stats.lives_left -= 1
+    
+    # delete any remaining field objects
+    self.elves.empty()
+    self.snowball.empty()
+
+    # Redraw snowman and elves
+    self._create_elves()
+    self.snowman.ready_snowman()
+
+    # Brief pause before movement starts
+    sleep(1)
 
 
   def _check_snowball_elf_collisions(self):

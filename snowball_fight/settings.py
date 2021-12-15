@@ -10,6 +10,7 @@ class Settings:
 
     # Snowman settings
     self.snowman_speed = 1
+    self.lives_limit = 3
 
     # Snowball settings
     self.snowball_speed = 1.0
