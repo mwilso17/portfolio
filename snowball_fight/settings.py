@@ -17,3 +17,7 @@ class Settings:
     self.snowball_height = 10
     self.snowball_color = (255, 255, 255)
     self.snowballs_allowed = 2
+
+    # Elf settings
+    self.elf_speed = 0.2
+    self.elf_frequency = 0.005

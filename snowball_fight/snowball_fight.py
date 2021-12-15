@@ -1,10 +1,12 @@
 import sys
+from random import random
 
 import pygame
 
 from settings import Settings
 from snowman import Snowman
 from snowball import Snowball
+from elf import Elf
 
 class SnowballFight:
   '''Main class to manage game'''
@@ -20,14 +22,20 @@ class SnowballFight:
 
     self.snowman = Snowman(self)
     self.snowball = pygame.sprite.Group()
+    self.elves = pygame.sprite.Group()
 
 
   def run_game(self):
     '''Runs the main loop for the game'''
     while True:
       self._check_events()
+
+      # Create new elf
+      self._create_elves()
+
       self.snowman.update()
       self._update_snowballs()
+      self.elves.update()
       self._update_screen()
 
   def _check_events(self):
@@ -75,6 +83,13 @@ class SnowballFight:
       if snowball.rect.left >= self.settings.screen_width:
         self.snowball.remove(snowball)
 
+  def _create_elves(self):
+    '''Create the elves'''
+    if random() < self.settings.elf_frequency:
+      elf = Elf(self)
+      self.elves.add(elf)
+      print(len(self.elves))
+
   def _update_screen(self):
     '''Update the images on the screen and flip to new screen'''
     # Update screen during each loop
@@ -82,6 +97,7 @@ class SnowballFight:
     self.snowman.blitme()
     for snowball in self.snowball.sprites():
       snowball.draw_snowball()
+    self.elves.draw(self.screen)
 
     # Update to most recent screen.
     pygame.display.flip()
