@@ -6,6 +6,7 @@ import pygame
 
 from settings import Settings
 from game_stats import GameStats
+from button import Button
 from snowman import Snowman
 from snowball import Snowball
 from elf import Elf
@@ -29,6 +30,9 @@ class SnowballFight:
     self.snowball = pygame.sprite.Group()
     self.elves = pygame.sprite.Group()
 
+    # Make play button
+    self.play_button = Button(self, 'Play')
+
 
   def run_game(self):
     '''Runs the main loop for the game'''
@@ -42,7 +46,7 @@ class SnowballFight:
         self.snowman.update()
         self._update_snowballs()
         self._update_elves()
-        
+
       self._update_screen()
 
   def _check_events(self):
@@ -56,6 +60,15 @@ class SnowballFight:
 
       elif event.type == pygame.KEYUP:
         self._check_keyup_events(event)
+
+      elif event.type == pygame.MOUSEBUTTONDOWN:
+        mouse_pos = pygame.mouse.get_pos()
+        self._check_play_button(mouse_pos)
+
+  def _check_play_button(self, mouse_pos):
+    '''Start a new game when Play is clicked'''
+    if self.play_button.rect.collidepoint(mouse_pos):
+      self.stats.game_active = True
 
   def _check_keydown_events(self, event):
     '''Respond to keypresses'''
@@ -151,6 +164,10 @@ class SnowballFight:
     for snowball in self.snowball.sprites():
       snowball.draw_snowball()
     self.elves.draw(self.screen)
+
+    # Draw play button when game is inactive
+    if not self.stats.game_active:
+      self.play_button.draw_button()
 
     # Update to most recent screen.
     pygame.display.flip()
