@@ -35,7 +35,7 @@ class SnowballFight:
 
       self.snowman.update()
       self._update_snowballs()
-      self.elves.update()
+      self._update_elves()
       self._update_screen()
 
   def _check_events(self):
@@ -83,12 +83,28 @@ class SnowballFight:
       if snowball.rect.left >= self.settings.screen_width:
         self.snowball.remove(snowball)
 
+    self._check_snowball_elf_collisions()
+
+  def _update_elves(self):
+    '''Update the position of all elves'''
+    self.elves.update()
+
+    # Decect when elf collides with snowman
+    if pygame.sprite.spritecollideany(self.snowman, self.elves):
+      print('hit')
+
+
+  def _check_snowball_elf_collisions(self):
+    '''Respond to bullet-elf collisions.'''
+
+    # Check collisions and remove snowballs that have hit an elf
+    collisions = pygame.sprite.groupcollide(self.snowball, self.elves, True, True)
+
   def _create_elves(self):
     '''Create the elves'''
     if random() < self.settings.elf_frequency:
       elf = Elf(self)
       self.elves.add(elf)
-      print(len(self.elves))
 
   def _update_screen(self):
     '''Update the images on the screen and flip to new screen'''

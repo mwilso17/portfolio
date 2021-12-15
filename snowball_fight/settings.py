@@ -19,5 +19,5 @@ class Settings:
     self.snowballs_allowed = 2
 
     # Elf settings
-    self.elf_speed = 0.2
-    self.elf_frequency = 0.005
+    self.elf_speed = 0.15
+    self.elf_frequency = 0.002
