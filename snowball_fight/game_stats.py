@@ -6,6 +6,9 @@ class GameStats:
     self.settings = sf_game.settings
     self.reset_stats()
 
+    # Start in active state
+    self.game_active = True
+
   def reset_stats(self):
     '''Initialize in game stats'''
     self.lives_left = self.settings.lives_limit

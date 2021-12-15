@@ -38,9 +38,11 @@ class SnowballFight:
       # Create new elf
       self._create_elves()
 
-      self.snowman.update()
-      self._update_snowballs()
-      self._update_elves()
+      if self.stats.game_active:
+        self.snowman.update()
+        self._update_snowballs()
+        self._update_elves()
+        
       self._update_screen()
 
   def _check_events(self):
@@ -98,21 +100,27 @@ class SnowballFight:
     if pygame.sprite.spritecollideany(self.snowman, self.elves):
       self._snowman_hit()
 
+    # Detect when elf reaches left side of screen
+    self._check_elves_left()
+
   def _snowman_hit(self):
     '''Respond to snowman being hit by an elf'''
-    # Reduce lives by 1
-    self.stats.lives_left -= 1
+    if self.stats.lives_left > 0:
+      # Reduce lives by 1
+      self.stats.lives_left -= 1
     
-    # delete any remaining field objects
-    self.elves.empty()
-    self.snowball.empty()
+      # delete any remaining field objects
+      self.elves.empty()
+      self.snowball.empty()
 
-    # Redraw snowman and elves
-    self._create_elves()
-    self.snowman.ready_snowman()
+      # Redraw snowman and elves
+      self._create_elves()
+      self.snowman.ready_snowman()
 
-    # Brief pause before movement starts
-    sleep(1)
+      # Brief pause before movement starts
+      sleep(1)
+    else:
+      self.stats.game_active = False
 
 
   def _check_snowball_elf_collisions(self):
@@ -126,6 +134,14 @@ class SnowballFight:
     if random() < self.settings.elf_frequency:
       elf = Elf(self)
       self.elves.add(elf)
+
+
+  def _check_elves_left(self):
+    '''Check if elf has reached left side of screen. Delete elf if so.'''
+    screen_rect = self.screen.get_rect()
+    for elf in self.elves.sprites():
+      if elf.rect.left <= 0:
+        self.elves.remove(elf)
 
   def _update_screen(self):
     '''Update the images on the screen and flip to new screen'''
