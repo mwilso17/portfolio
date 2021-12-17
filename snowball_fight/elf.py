@@ -20,7 +20,7 @@ class Elf(Sprite):
     self.rect.left = self.screen.get_rect().right
 
     # Limit placement of elves
-    elf_top_max = self.settings.screen_height - 60
+    elf_top_max = self.settings.screen_height - 100
     self.rect.top = randint(0, elf_top_max)
 
     # Store elf's position.
