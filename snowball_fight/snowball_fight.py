@@ -77,6 +77,7 @@ class SnowballFight:
       # Reset game stats.
       self.stats.reset_stats()
       self.stats.game_active = True
+      self.sb.prep_score()
 
       # Get rid of remaining objects on the screen.
       self.elves.empty()
