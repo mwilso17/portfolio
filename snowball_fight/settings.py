@@ -16,7 +16,7 @@ class Settings:
     self.snowball_width = 10
     self.snowball_height = 10
     self.snowball_color = (255, 255, 255)
-    self.snowballs_allowed = 2
+
 
     # Game speed settings
     self.speedup_scale = 1.3
@@ -28,6 +28,7 @@ class Settings:
     self.snowball_speed = 1.0
     self.elf_frequency = 0.002
     self.elf_speed = 0.15
+    self.snowballs_allowed = 2
 
   def increase_speed(self):
     '''Increases speed of dynamic settings'''
