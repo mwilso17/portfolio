@@ -21,6 +21,9 @@ class Settings:
     # Game speed settings
     self.speedup_scale = 1.3
 
+    # Point to score elf hits
+    self.elf_points = 1
+
     self.initialize_dynamic_settings()
 
   def initialize_dynamic_settings(self):

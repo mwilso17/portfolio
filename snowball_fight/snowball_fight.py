@@ -165,6 +165,10 @@ class SnowballFight:
     # Check collisions and remove snowballs that have hit an elf
     collisions = pygame.sprite.groupcollide(self.snowball, self.elves, True, True)
 
+    if collisions:
+      self.stats.score += self.settings.elf_points
+      self.sb.prep_score()
+
   def _create_elves(self):
     '''Create the elves'''
     if random() < self.settings.elf_frequency:
