@@ -9,6 +9,9 @@ class GameStats:
     # Start in an inactive state
     self.game_active = False
 
+    # Store high score
+    self.high_score = 0
+
   def reset_stats(self):
     '''Initialize in game stats'''
     self.lives_left = self.settings.lives_limit

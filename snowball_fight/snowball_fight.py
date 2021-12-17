@@ -167,8 +167,10 @@ class SnowballFight:
     collisions = pygame.sprite.groupcollide(self.snowball, self.elves, True, True)
 
     if collisions:
-      self.stats.score += self.settings.elf_points
+      for elves in collisions.values():
+        self.stats.score += self.settings.elf_points * len(elves)
       self.sb.prep_score()
+      self.sb.check_high_score()
 
   def _create_elves(self):
     '''Create the elves'''
