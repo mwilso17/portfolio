@@ -19,7 +19,7 @@ class Settings:
     self.snowballs_allowed = 2
 
     # Game speed settings
-    self.speedup_scale = 1.1
+    self.speedup_scale = 1.3
 
     self.initialize_dynamic_settings()
 
@@ -34,3 +34,4 @@ class Settings:
     self.snowball_speed *= self.speedup_scale
     self.elf_frequency *= self.speedup_scale
     self.elf_speed *= self.speedup_scale
+    self.snowballs_allowed += 1

@@ -69,6 +69,9 @@ class SnowballFight:
     '''Start a new game when Play is clicked'''
     button_clicked = self.play_button.rect.collidepoint(mouse_pos)
     if button_clicked and not self.stats.game_active:
+      # Reset game settings.
+      self.settings.initialize_dynamic_settings()
+
       # Reset game stats.
       self.stats.reset_stats()
       self.stats.game_active = True
@@ -143,6 +146,9 @@ class SnowballFight:
       # Redraw snowman and elves
       self._create_elves()
       self.snowman.ready_snowman()
+
+      # Increase difficulty when hit
+      self.settings.increase_speed()
 
       # Brief pause before movement starts
       sleep(1)
