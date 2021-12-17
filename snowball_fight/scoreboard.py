@@ -1,10 +1,14 @@
 import pygame.font
+from pygame.sprite import Group
+
+from snowman import Snowman
 
 class Scoreboard:
   '''A class that stores and reports score information.'''
 
   def __init__(self, sf_game):
     '''Initialize score keeping.'''
+    self.sf_game = sf_game
     self.screen = sf_game.screen
     self.screen_rect = self.screen.get_rect()
     self.settings = sf_game.settings
@@ -17,6 +21,9 @@ class Scoreboard:
     # Prep initial score image
     self.prep_score()
     self.prep_high_score()
+
+    # Prep snowman images
+    self.prep_snowmen()
 
   def prep_score(self):
     '''Turn the score into an image'''
@@ -44,8 +51,18 @@ class Scoreboard:
       self.stats.high_score = self.stats.score
       self.prep_high_score()
 
+  def prep_snowmen(self):
+    '''Display lives left'''
+    self.snowmen = Group()
+    for snowman_number in range(self.stats.lives_left):
+      snowman = Snowman(self.sf_game)
+      snowman.rect.x = 10 + snowman_number * snowman.rect.width
+      snowman.rect.y = 750
+      self.snowmen.add(snowman)
+
   def show_score(self):
-    '''Draw score to screen.'''
+    '''Draw images to screen.'''
     self.screen.blit(self.score_image, self.score_rect)
     self.screen.blit(self.high_score_image, self.high_score_rect)
+    self.snowmen.draw(self.screen)
 

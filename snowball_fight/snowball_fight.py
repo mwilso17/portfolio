@@ -78,6 +78,7 @@ class SnowballFight:
       self.stats.reset_stats()
       self.stats.game_active = True
       self.sb.prep_score()
+      self.sb.prep_snowmen()
 
       # Get rid of remaining objects on the screen.
       self.elves.empty()
@@ -141,6 +142,7 @@ class SnowballFight:
     if self.stats.lives_left > 0:
       # Reduce lives by 1
       self.stats.lives_left -= 1
+      self.sb.prep_snowmen()
     
       # delete any remaining field objects
       self.elves.empty()

@@ -1,10 +1,12 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Snowman:
+class Snowman(Sprite):
   '''Class that manages the player character, aka: Snowman'''
 
   def __init__(self, sf_game):
     '''Initializes the Snowman and sets its starting point'''
+    super().__init__()
     self.screen = sf_game.screen
     self.settings = sf_game.settings
     self.screen_rect = sf_game.screen.get_rect()
