@@ -67,8 +67,22 @@ class SnowballFight:
 
   def _check_play_button(self, mouse_pos):
     '''Start a new game when Play is clicked'''
-    if self.play_button.rect.collidepoint(mouse_pos):
+    button_clicked = self.play_button.rect.collidepoint(mouse_pos)
+    if button_clicked and not self.stats.game_active:
+      # Reset game stats.
+      self.stats.reset_stats()
       self.stats.game_active = True
+
+      # Get rid of remaining objects on the screen.
+      self.elves.empty()
+      self.snowball.empty()
+
+      # Reset screen to the start of the game.
+      self._create_elves()
+      self.snowman.ready_snowman()
+
+      # Hide the mouse once 'start' is clicked
+      pygame.mouse.set_visible(False)
 
   def _check_keydown_events(self, event):
     '''Respond to keypresses'''
