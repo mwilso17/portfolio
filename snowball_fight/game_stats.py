@@ -12,3 +12,4 @@ class GameStats:
   def reset_stats(self):
     '''Initialize in game stats'''
     self.lives_left = self.settings.lives_limit
+    self.score = 0

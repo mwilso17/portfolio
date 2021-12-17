@@ -6,6 +6,7 @@ import pygame
 
 from settings import Settings
 from game_stats import GameStats
+from scoreboard import Scoreboard
 from button import Button
 from snowman import Snowman
 from snowball import Snowball
@@ -25,6 +26,7 @@ class SnowballFight:
 
     # Instant that stores game stats.
     self.stats = GameStats(self)
+    self.sb = Scoreboard(self)
 
     self.snowman = Snowman(self)
     self.snowball = pygame.sprite.Group()
@@ -185,6 +187,8 @@ class SnowballFight:
     for snowball in self.snowball.sprites():
       snowball.draw_snowball()
     self.elves.draw(self.screen)
+
+    self.sb.show_score()
 
     # Draw play button when game is inactive
     if not self.stats.game_active:
