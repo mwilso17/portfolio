@@ -13,12 +13,24 @@ class Settings:
     self.lives_limit = 3
 
     # Snowball settings
-    self.snowball_speed = 1.0
     self.snowball_width = 10
     self.snowball_height = 10
     self.snowball_color = (255, 255, 255)
     self.snowballs_allowed = 2
 
-    # Elf settings
-    self.elf_speed = 0.15
+    # Game speed settings
+    self.speedup_scale = 1.1
+
+    self.initialize_dynamic_settings()
+
+  def initialize_dynamic_settings(self):
+    '''Settings for changes in difficulty'''
+    self.snowball_speed = 1.0
     self.elf_frequency = 0.002
+    self.elf_speed = 0.15
+
+  def increase_speed(self):
+    '''Increases speed of dynamic settings'''
+    self.snowball_speed *= self.speedup_scale
+    self.elf_frequency *= self.speedup_scale
+    self.elf_speed *= self.speedup_scale

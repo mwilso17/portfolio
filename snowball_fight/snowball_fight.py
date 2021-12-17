@@ -148,6 +148,7 @@ class SnowballFight:
       sleep(1)
     else:
       self.stats.game_active = False
+      pygame.mouse.set_visible(True)
 
 
   def _check_snowball_elf_collisions(self):
