@@ -29,8 +29,8 @@ class Settings:
   def initialize_dynamic_settings(self):
     '''Settings for changes in difficulty'''
     self.snowball_speed = 1.0
-    self.elf_frequency = 0.003
-    self.elf_speed = 0.15
+    self.elf_frequency = 0.005
+    self.elf_speed = 0.25
     self.snowballs_allowed = 2
 
   def increase_speed(self):

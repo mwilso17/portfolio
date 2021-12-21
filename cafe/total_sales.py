@@ -1,5 +1,5 @@
 # Mike Wilson 29 November 2021
-# This is an attempt to calculate total sales from totals.txt
+# This program calculates totals from totals.txt
 
 filename = 'cafe\\totals.txt'
 
