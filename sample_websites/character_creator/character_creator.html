@@ -7,7 +7,13 @@
   <body>
 
     <form id='create_character'>
-      <button id='build-my-character'>Build my character!</button>
+      <label for='firstName'>First name (4-14 characters): </label>
+      <input type='text' id='firstName' name='firstName' required 
+        minlength='4' maxlength='14' size='10'> <br>
+      <label for='lastName'>Last name (4-14 characters): </label>
+      <input type='text' id='lastName' name='lastName' required
+        minlength='4' maxlength="14" size='10'> <br>
+      <button id='buildMyCharacter'>Build my character!</button>
     </form>
 
     <script src='character_creator.js'></script><!--put scripts at the bottom with src attribute-->
