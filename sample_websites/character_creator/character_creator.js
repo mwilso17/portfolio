@@ -9,10 +9,10 @@ let mageSkills = ['Fireball', 'Sleep', 'Detect magic fields'];
 
 var characterName = true;
 
-function validateName(){
-  alert('this is a function');
-}
+var button = document.getElementById('build-my-character');
 
-if (characterName == true) {
-  validateName();
+button.addEventListener('click', validateCharacter);
+
+function validateCharacter(){
+  alert('Your character has been created');
 }
