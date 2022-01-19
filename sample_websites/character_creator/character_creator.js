@@ -15,7 +15,7 @@ function validateCharacter(){
 function generateCharacterStats(){
   let race = document.getElementById('characterRace').value;
   let characterClass = document.getElementById('characterClass').value;
-
+//Add code to handle stat generation for 3 races. Human, elf, dwarf. Use if else if statements
 
 }
 
